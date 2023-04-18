@@ -65,6 +65,11 @@ public class OrderItem implements Serializable{
 	public void setPrice(Double price) {
 		this.price = price;
 	}
+	
+	//Aqui na plataforma JavaEE o que vale é o get
+	public Double getSubTotal() {
+		return price * quantity;
+	}
 
 	@Override
 	public int hashCode() {
