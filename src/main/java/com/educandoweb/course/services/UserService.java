@@ -31,4 +31,17 @@ public class UserService {
 	public void delete(Long id) {
 		repository.deleteById(id);
 	}
+	
+	public User update(Long id, User obj) {
+		//Ele não vai logo no banco de dados, ele pega a referencia e depois quando dermos o updated que ele vai no banco atualizar, sendo mais eficiente
+		User entity = repository.getReferenceById(id);
+		updateDate(entity, obj);
+		return repository.save(entity);
+	}
+
+	private void updateDate(User entity, User obj) {
+		entity.setName(obj.getName());
+		entity.setEmail(obj.getEmail());
+		entity.setPhone(obj.getPhone());
+	}
 }
